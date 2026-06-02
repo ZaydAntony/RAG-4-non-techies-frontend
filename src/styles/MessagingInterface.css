@@ -1,0 +1,436 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+.mi-wrapper {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top left, #ece3ff, transparent 35%),
+    radial-gradient(circle at bottom right, #e7dcff, transparent 30%),
+    #f7f4ff;
+
+  font-family: Arial, sans-serif;
+}
+
+.mi-sidebar {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  /* FIX: allow sidebar to scroll internally without growing past viewport */
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(18px);
+  border-right: 1px solid rgba(185, 167, 255, 0.2);
+  transition: 0.25s ease;
+}
+
+.mi-sidebar-top {
+  padding: 20px;
+  flex-shrink: 0;
+}
+
+.mi-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.mi-logo-icon {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: #b9a7ff;
+  color: white;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.mi-logo h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.mi-logo p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: #7f72ab;
+}
+
+.mi-newchat-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(
+    135deg,
+    #b9a7ff,
+    #9d8bff
+  );
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.mi-newchat-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* FIX: sections are flex children that can shrink and scroll */
+.mi-section {
+  padding: 0 16px 16px;
+  display: flex;
+  flex-direction: column;
+  /* each section shares available space, scrolls independently */
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.mi-section-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #6b5ca5;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
+}
+
+/* FIX: chatlist and doclist now scroll when content overflows */
+.mi-chatlist,
+.mi-doclist {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+  /* subtle scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(185, 167, 255, 0.4) transparent;
+}
+
+.mi-chatlist::-webkit-scrollbar,
+.mi-doclist::-webkit-scrollbar {
+  width: 4px;
+}
+
+.mi-chatlist::-webkit-scrollbar-track,
+.mi-doclist::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mi-chatlist::-webkit-scrollbar-thumb,
+.mi-doclist::-webkit-scrollbar-thumb {
+  background: rgba(185, 167, 255, 0.4);
+  border-radius: 4px;
+}
+
+.mi-chatitem,
+.mi-docitem {
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(185, 167, 255, 0.12);
+  border: 1px solid rgba(185, 167, 255, 0.18);
+  cursor: pointer;
+  transition: 0.2s ease;
+  flex-shrink: 0;
+}
+
+.mi-chatitem:hover,
+.mi-docitem:hover {
+  background: rgba(185, 167, 255, 0.24);
+  transform: translateX(2px);
+}
+
+.mi-chatitem.active {
+  background: rgba(185, 167, 255, 0.34);
+  border-color: rgba(185, 167, 255, 0.5);
+}
+
+.mi-chat-title {
+  font-size: 14px;
+  color: #2e2850;
+  /* FIX: long titles don't break layout */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mi-docitem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #51457f;
+}
+
+.mi-docitem span:last-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mi-sidebar-footer {
+  padding: 18px;
+  flex-shrink: 0;
+}
+
+.del-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 14px;
+  background: rgba(225, 36, 61, 0.92);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.del-btn:hover {
+  transform: translateY(-2px);
+}
+
+.mi-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.mi-topbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 24px;
+  border-bottom: 1px solid rgba(185, 167, 255, 0.16);
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(12px);
+  flex-shrink: 0;
+}
+
+.mi-topbar h3 {
+  margin: 0;
+}
+
+.mi-topbar p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #7769a7;
+}
+
+.mi-mobile-toggle {
+  display: none;
+}
+
+.mi-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  /* FIX: clean scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(185, 167, 255, 0.3) transparent;
+}
+
+.mi-messages::-webkit-scrollbar {
+  width: 5px;
+}
+
+.mi-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mi-messages::-webkit-scrollbar-thumb {
+  background: rgba(185, 167, 255, 0.35);
+  border-radius: 4px;
+}
+
+.mi-empty-state {
+  margin: auto;
+  text-align: center;
+  max-width: 500px;
+}
+
+.mi-empty-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  background: rgba(185, 167, 255, 0.22);
+}
+
+.mi-empty-state h2 {
+  margin-bottom: 10px;
+}
+
+.mi-empty-state p {
+  color: #6f6697;
+}
+
+.mi-ai,
+.mi-user {
+  display: flex;
+}
+
+.mi-user {
+  justify-content: flex-end;
+}
+
+.mi-bubble {
+  max-width: 72%;
+  padding: 14px 18px;
+  border-radius: 20px;
+  line-height: 1.6;
+  position: relative;
+  animation: fadeUp 0.2s ease;
+  /* FIX: white-space pre-wrap kept — renderMessage handles \n via <br> now */
+  word-break: break-word;
+}
+
+.mi-bubble.ai {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(185, 167, 255, 0.18);
+  color: #2b2b2b;
+}
+
+.mi-bubble.user {
+  background: linear-gradient(
+    135deg,
+    #b9a7ff,
+    #9b88ff
+  );
+  color: white;
+}
+
+.mi-inputbar {
+  padding: 18px 24px;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.58);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(185, 167, 255, 0.18);
+  flex-shrink: 0;
+}
+
+.mi-inputbar textarea {
+  flex: 1;
+  resize: none;
+  min-height: 52px;
+  max-height: 180px;
+  border: 1px solid rgba(185, 167, 255, 0.3);
+  border-radius: 18px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.75);
+  outline: none;
+  font-size: 14px;
+  overflow-y: auto;
+  font-family: Arial, sans-serif;
+}
+
+.mi-inputbar textarea:focus {
+  border-color: #a18cff;
+}
+
+.mi-inputbar button {
+  height: 52px;
+  padding: 0 22px;
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(
+    135deg,
+    #b9a7ff,
+    #9785ff
+  );
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.mi-inputbar button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.mi-empty {
+  font-size: 13px;
+  color: #8f84b4;
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .mi-sidebar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 100;
+  }
+
+  .mi-sidebar.closed {
+    transform: translateX(-100%);
+  }
+
+  .mi-mobile-toggle {
+    display: block;
+    border: none;
+    background: rgba(185, 167, 255, 0.2);
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .mi-bubble {
+    max-width: 90%;
+  }
+
+  .mi-messages {
+    padding: 20px;
+  }
+}

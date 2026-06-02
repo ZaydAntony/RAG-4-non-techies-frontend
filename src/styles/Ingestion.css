@@ -1,0 +1,427 @@
+#root {
+  height: 100vh;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #f6f3ff;
+  overflow-y: auto;
+  font-family: Arial, sans-serif;
+}
+
+/* =========================
+   SESSION LOADING OVERLAY
+========================= */
+
+.session-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  background: rgba(246, 243, 255, 0.92);
+  backdrop-filter: blur(12px);
+  animation: overlayFadeIn 0.25s ease forwards;
+}
+
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.session-spinner-ring {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 3.5px solid rgba(185, 167, 255, 0.3);
+  border-top-color: #8264ff;
+  animation: spin 0.85s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.session-loading-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #5a4d84;
+  letter-spacing: 0.03em;
+  animation: labelPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes labelPulse {
+  0%, 100% { opacity: 0.6; }
+  50%      { opacity: 1; }
+}
+
+/* =========================
+   TOP PIPELINE
+========================= */
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90vw;
+  height: 15vh;
+  margin: 0 auto;
+}
+
+/* ── Progress bar track ── */
+.loading {
+  position: relative;
+  width: 50vw;
+  height: 0.8vh;
+  background-color: #b9a7ff;
+  border-radius: 8px;
+  opacity: 0.85;
+  overflow: visible;
+  transition: opacity 0.4s ease, box-shadow 0.4s ease;
+}
+
+.loading.pipeline-active {
+  opacity: 1;
+  box-shadow: 0 0 8px rgba(130, 100, 255, 0.35);
+}
+
+/* ── Fill strip ── */
+.loading-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  border-radius: 8px;
+  width: 0%;
+  transition: width 2.2s cubic-bezier(0.4, 0, 0.2, 1),
+              background 0.4s ease;
+  background: linear-gradient(90deg, #7c5cfc, #b9a7ff);
+}
+
+/* status colors */
+.loading-fill.status-uploading  { background: linear-gradient(90deg, #6e5add, #a695f5); }
+.loading-fill.status-processing { background: linear-gradient(90deg, #5080d0, #92b4f5); }
+.loading-fill.status-ready      { background: linear-gradient(90deg, #28aa6e, #7de8b8); }
+.loading-fill.status-error      { background: linear-gradient(90deg, #cc4444, #f09090); transition: width 0.4s ease; }
+.loading-fill.status-idle       { background: #b9a7ff; }
+
+/* =========================
+   BOTTOM AREA
+========================= */
+
+.container2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 90vw;
+  height: 60vh;
+  margin: 0 auto;
+  padding-top: 2vh;
+}
+
+/* =========================
+   MESSAGING
+========================= */
+
+.Messaging {
+  width: 60vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================
+   FILE UPLOAD
+========================= */
+
+.file-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.uploadbot-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.uploadbot-wrapper:hover  { transform: translateY(-5px); }
+.uploadbot-wrapper:active { transform: translateY(-2px) scale(0.98); }
+
+.uploadbot,
+.processingvid {
+  pointer-events: none;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+}
+
+/* =========================
+   ERROR
+========================= */
+
+.upload-error-pill {
+  margin-top: 6px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: rgba(255, 225, 225, 0.85);
+  border: 1px solid rgba(200, 80, 80, 0.35);
+  color: #a03030;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  animation: errorPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes errorPop {
+  from { opacity: 0; transform: scale(0.85) translateY(-4px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* =========================
+   STATUS LABEL
+========================= */
+
+.uploadbot-text {
+  margin-top: 1vh;
+  padding: 8px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(185, 167, 255, 0.35);
+  backdrop-filter: blur(10px);
+  font-size: 14px;
+  font-weight: 600;
+  color: #5a4d84;
+  white-space: nowrap;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.label-visible { opacity: 1; transform: translateY(0); }
+.label-hidden  { opacity: 0; transform: translateY(3px); }
+
+.uploadbot-text.status-uploading {
+  color: #4a3eaa;
+  border-color: rgba(110, 90, 220, 0.45);
+  background: rgba(230, 225, 255, 0.7);
+}
+
+.uploadbot-text.status-processing {
+  color: #3a6bcc;
+  border-color: rgba(80, 130, 220, 0.4);
+  background: rgba(220, 232, 255, 0.7);
+}
+
+.uploadbot-text.status-ready {
+  color: #1a7a5a;
+  border-color: rgba(40, 170, 110, 0.4);
+  background: rgba(210, 250, 235, 0.7);
+}
+
+.uploadbot-text.status-error {
+  color: #a03030;
+  border-color: rgba(200, 80, 80, 0.4);
+  background: rgba(255, 225, 225, 0.7);
+}
+
+.uploadbot-text.status-idle {
+  color: #5a4d84;
+}
+
+/* =========================
+   INPUT
+========================= */
+
+.upload-input {
+  display: none;
+}
+
+/* =========================
+   PIPELINE BOT — FIX: was opacity:0 with no animation
+========================= */
+
+.pipeline-bot {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  top: -35px;
+  left: 0;
+  z-index: 50;
+  opacity: 0;
+  animation: travelPipeline 2.4s cubic-bezier(0.4, 0, 0.6, 1) 0.1s forwards;
+}
+
+@keyframes travelPipeline {
+  0%   { opacity: 0; left: 0%; }
+  8%   { opacity: 1; }
+  90%  { opacity: 1; left: 92%; }
+  100% { opacity: 0; left: 94%; }
+}
+
+/* =========================
+   GEARS
+========================= */
+
+.gears {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.processingImg {
+  position: absolute;
+  opacity: 0.9;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.gears-visible {
+  opacity: 0.9;
+  transform: scale(1);
+}
+
+.gears-hidden {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.processingvid {
+  position: absolute;
+}
+
+/* FIX: both states now have transitions for smooth cross-fade */
+.gears-vid-visible {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.gears-vid-hidden {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+/* =========================
+   AI BOT
+========================= */
+
+.ai-bot-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.uploadcompletebot {
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.ai-ready {
+  animation: pulseGlow 2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+@keyframes pulseGlow {
+  0%   { transform: scale(1); filter: drop-shadow(0 0 0px rgba(0, 200, 160, 0)); }
+  50%  { transform: scale(1.07); filter: drop-shadow(0 0 12px rgba(0, 210, 160, 0.7)); }
+  100% { transform: scale(1); filter: drop-shadow(0 0 0px rgba(0, 200, 160, 0)); }
+}
+
+/* =========================
+   SUCCESS POPUP
+========================= */
+
+.success-popout {
+  position: absolute;
+  right: -90px;
+  width: 70px;
+  height: 70px;
+  animation: popOut 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes popOut {
+  from { opacity: 0; transform: scale(0.2) rotate(-15deg); }
+  60%  { opacity: 1; transform: scale(1.1) rotate(4deg); }
+  to   { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+/* =========================
+   VERTICAL PIPELINE
+========================= */
+
+.loading2 {
+  position: relative;
+  width: 0.8vh;
+  height: 45vh;
+  background-color: #b9a7ff;
+  border-radius: 8px;
+  opacity: 0.85;
+  overflow: visible;
+  transition: opacity 0.4s ease, box-shadow 0.4s ease;
+}
+
+.loading2.pipeline-active {
+  opacity: 1;
+  box-shadow: 0 0 8px rgba(130, 100, 255, 0.35);
+}
+
+.loading2-fill {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 0%;
+  border-radius: 8px;
+  transition: height 2.2s cubic-bezier(0.4, 0, 0.2, 1),
+              background 0.4s ease;
+  background: linear-gradient(180deg, #7c5cfc, #b9a7ff);
+}
+
+.loading2-fill.status-uploading  { background: linear-gradient(180deg, #6e5add, #a695f5); }
+.loading2-fill.status-processing { background: linear-gradient(180deg, #5080d0, #92b4f5); }
+.loading2-fill.status-ready      { background: linear-gradient(180deg, #28aa6e, #7de8b8); }
+.loading2-fill.status-error      { background: linear-gradient(180deg, #cc4444, #f09090); }
+.loading2-fill.status-idle       { background: #b9a7ff; }
+
+/* =========================
+   VERTICAL BOT
+========================= */
+
+.vertical-bot {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  opacity: 0;
+  animation:
+    fadeInBot 0.3s ease forwards,
+    descendPipeline 2.5s cubic-bezier(0.4, 0, 0.6, 1) 0.15s forwards;
+}
+
+@keyframes fadeInBot {
+  to { opacity: 1; }
+}
+
+@keyframes descendPipeline {
+  from { top: -20px; opacity: 1; }
+  to   { top: 85%; opacity: 1; }
+}
+
+/* =========================
+   PIPELINE EXTENSION
+========================= */
+
+.Ingest-pipeline-extension {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}

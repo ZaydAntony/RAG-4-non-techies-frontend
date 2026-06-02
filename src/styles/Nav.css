@@ -1,0 +1,85 @@
+/* =========================
+   NAV WRAPPER
+========================= */
+.nav-container {
+  width: 100%;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+.ai-navbar {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(185, 167, 255, 0.25);
+  padding: 0;
+}
+
+/* inner navbar layout */
+.ai-navbar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 24px;
+}
+
+/* =========================
+   BRAND
+========================= */
+.ai-brand {
+  margin: 0;
+  font-family: "Pacifico", cursive;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 30px;
+  letter-spacing: 0.5px;
+  color: #5a4d84 !important;
+  text-decoration: none;
+  transform: rotate(-15deg);
+}
+
+/* =========================
+   ACTION AREA
+========================= */
+.nav-actions {
+  display: flex;
+  align-items: center;
+}
+
+/* =========================
+   BUTTON
+========================= */
+.ai-btn {
+  border: 1px solid rgba(185, 167, 255, 0.6) !important;
+  background: rgba(185, 167, 255, 0.15) !important;
+  color: #5a4d84 !important;
+  border-radius: 12px;
+  padding: 8px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+/* hover */
+.ai-btn:hover {
+  background: #b9a7ff !important;
+  color: #1b1b1b !important;
+  transform: translateY(-2px);
+}
+
+/* =========================
+   ALERT / NOTICE BAR
+========================= */
+.ai-alert {
+  margin: 5px;
+  text-align: center;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.45) !important;
+  border: none;
+  border-bottom: 1px solid rgba(185, 167, 255, 0.2);
+  border-radius: 0;
+  color: #4b3f72;
+  font-size: 14px;
+  backdrop-filter: blur(10px);
+}
