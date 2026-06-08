@@ -23,10 +23,10 @@ So I built exactly that.
 
 Raggit is designed to make complex AI concepts feel simple through interaction:
 
-- 📄 Upload documents and instantly see them become searchable knowledge  
-- 🧠 Watch “understanding” happen through embeddings (visually represented)  
-- 💬 Chat with your documents like they’re actually alive  
-- ⚡ Experience retrieval + response flow as a *live system*, not a black box  
+-  Upload documents and instantly see them become searchable knowledge  
+-  Watch “understanding” happen through embeddings (visually represented)  
+-  Chat with your documents like they’re actually alive  
+-  Experience retrieval + response flow as a *live system*, not a black box  
 
 Everything is designed to feel **fluid, responsive, and slightly playful** — not like a backend demo.
 
@@ -40,11 +40,11 @@ This UI was built with one goal:
 
 So the frontend focuses on:
 
-- 🧼 Clean, minimal interface with personality  
-- 🎭 Subtle animations that make AI feel “alive”  
-- 🧭 Clear separation between ingestion, retrieval, and chat flow  
-- ⚡ Fast transitions with zero “clunky dashboard energy”  
-- 🧠 Visual feedback for every AI action (no silent black boxes)
+-  Clean, minimal interface with personality  
+-  Subtle animations that make AI feel “alive”  
+-  Clear separation between ingestion, retrieval, and chat flow  
+-  Fast transitions with zero “clunky dashboard energy”  
+-  Visual feedback for every AI action (no silent black boxes)
 
 ---
 
@@ -59,15 +59,15 @@ So the frontend focuses on:
 
 ## ⚙️ Frontend Features
 
-- 📄 PDF upload experience  
-- 🧠 Visual feedback during ingestion & processing  
-- 💬 Chat interface designed for context-aware conversations   
-- ⚡ Real-time feeling UX (even when backend is async)  
-- 🎯 Session-based UI state separation  
+-  PDF upload experience  
+-  Visual feedback during ingestion & processing  
+-  Chat interface designed for context-aware conversations   
+-  Real-time feeling UX (even when backend is async)  
+-  Session-based UI state separation  
 
 ---
 
-## 🧪 Current UI Limitations
+##  Current UI Limitations
 
 - No real-time streaming (responses appear after processing)  
 - Some flows still rely on loading states instead of live updates  
@@ -77,11 +77,11 @@ So the frontend focuses on:
 
 ## 🚀 Frontend Vision
 
-- 🔥 Fully real-time chat streaming UX  
-- ✨ More immersive “AI thinking” animations  
-- 📊 Better visualization of retrieved chunks  
-- 📱 Fully responsive mobile-first redesign  
-- 🧠 Smarter UI state transitions (less waiting, more flow)
+-  Fully real-time chat streaming UX  
+-  More immersive “AI thinking” animations  
+-  Better visualization of retrieved chunks  
+-  Fully responsive mobile-first redesign  
+-  Smarter UI state transitions (less waiting, more flow)
 
 ---
 

@@ -1,7 +1,7 @@
 import "../styles/Nav.css";
 import { useEffect, useState } from "react";
 
-const API_BASE = "http://127.0.0.1:8000/api/v1";
+const API_BASE = import.meta.env.VITE_API_URL;
 
 function Nav() {
   const [loading, setLoading] = useState(false);

@@ -14,7 +14,7 @@ import MessagingInterface from "./MessagingInterface";
 import Nav from "./Navbar";
 
 // FIX: single source of truth for the API base — no more localhost vs 127.0.0.1 mismatch
-const API_BASE = "http://127.0.0.1:8000/api/v1";
+const API_BASE = import.meta.env.VITE_API_URL;
 
 const STATUS_LABELS = {
   idle: "Upload Knowledge Files",
@@ -41,7 +41,6 @@ const V_FILL = {
 };
 
 function Ingestion() {
-  const [sessionLoading, setSessionLoading] = useState(true);
   const [status, setStatus] = useState("idle");
   const [ready, setReady] = useState(false);
   const prevStatusRef = useRef(null);
@@ -50,27 +49,8 @@ function Ingestion() {
   const [pipelineKey, setPipelineKey] = useState(0);
   const [verticalKey, setVerticalKey] = useState(0);
   const [uploadError, setUploadError] = useState(null);
-
   const labelTimeoutRef = useRef(null);
-
-  useEffect(() => {
-    const sessionId =
-      window.location.pathname.split("/session/")[1] ||
-      localStorage.getItem("session_id");
-
-    const minDelay = new Promise((r) => setTimeout(r, 900));
-
-    const sessionCheck = sessionId
-      ? Promise.resolve()
-      : new Promise((_, reject) =>
-          setTimeout(() => reject(new Error("No session")), 5000)
-        );
-
-    Promise.all([minDelay, sessionCheck])
-      .then(() => setSessionLoading(false))
-      .catch(() => setSessionLoading(false));
-  }, []);
-
+  
   useEffect(() => {
     if (prevStatusRef.current === null) {
       prevStatusRef.current = status;
@@ -188,14 +168,6 @@ function Ingestion() {
   return (
     <>
       <Nav />
-
-      {sessionLoading && (
-        <div className="session-overlay">
-          <div className="session-spinner-ring" />
-          <span className="session-loading-label">Starting session…</span>
-        </div>
-      )}
-
       <div className="container">
         <div className="file-upload">
           <label htmlFor="fileInput" className="uploadbot-wrapper">

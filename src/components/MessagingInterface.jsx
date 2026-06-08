@@ -8,7 +8,7 @@ import {
 import "../styles/MessagingInterface.css";
 
 // FIX: single API base — matches Ingestion.js
-const API_BASE = "http://127.0.0.1:8000/api/v1";
+const API_BASE = import.meta.env.VITE_API_URL;
 
 export default function MessagingInterface() {
   const [sessionId, setSessionId] = useState(
