@@ -211,8 +211,8 @@ function Ingestion() {
               loop
               muted
               playsInline
-              width="60"
-              height="60"
+              width="48"
+              height="48"
             >
               <source src={filemp4} type="video/mp4" />
             </video>
@@ -226,8 +226,8 @@ function Ingestion() {
             className={`processingImg ${
               showGearsPng ? "gears-visible" : "gears-hidden"
             }`}
-            width="120"
-            height="120"
+            width="96"
+            height="96"
           />
 
           <video
@@ -238,8 +238,8 @@ function Ingestion() {
             className={
               showGearsVid ? "gears-vid-visible" : "gears-vid-hidden"
             }
-            width="120"
-            height="120"
+            width="96"
+            height="96"
           >
             <source src={processingVid} type="video/mp4" />
           </video>
@@ -268,8 +268,8 @@ function Ingestion() {
                 loop
                 muted
                 playsInline
-                width="60"
-                height="60"
+                width="48"
+                height="48"
               >
                 <source src={filemp4} type="video/mp4" />
               </video>
@@ -281,12 +281,12 @@ function Ingestion() {
               src={aibot}
               className={`uploadcompletebot ${ready ? "ai-ready" : ""}`}
               alt="AI Bot"
-              width="120"
-              height="120"
+              width="96"
+              height="96"
             />
 
             {isReady && (
-              <video className="success-popout" autoPlay loop muted playsInline width="60" height="60">
+              <video className="success-popout" autoPlay loop muted playsInline width="48" height="48">
                 <source src={approved} type="video/mp4" />
               </video>
             )}

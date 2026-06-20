@@ -193,12 +193,12 @@ body,
 
 .del-btn {
   width: 100%;
-  padding: 12px;
+  padding: 9.5px;
   border: none;
-  border-radius: 14px;
+  border-radius: 12px;
   background: rgba(225, 36, 61, 0.92);
   color: white;
-  font-weight: 700;
+  font-weight: 500;
   cursor: pointer;
   transition: 0.2s ease;
 }
