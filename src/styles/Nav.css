@@ -83,3 +83,27 @@
   font-size: 14px;
   backdrop-filter: blur(10px);
 }
+
+/* =========================
+   RESPONSIVE — SMALL SCREENS
+========================= */
+@media (max-width: 480px) {
+  .ai-navbar-inner {
+    padding: 12px 16px;
+  }
+
+  .ai-brand {
+    font-size: 24px;
+  }
+
+  .ai-btn {
+    padding: 7px 14px;
+    font-size: 13px;
+  }
+
+  .ai-alert {
+    margin: 4px;
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+}

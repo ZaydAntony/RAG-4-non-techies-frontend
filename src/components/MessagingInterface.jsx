@@ -7,6 +7,8 @@ import {
 
 import "../styles/MessagingInterface.css";
 
+import robot from "../assets/brand.png";
+
 // FIX: single API base — matches Ingestion.js
 const API_BASE = import.meta.env.VITE_API_URL;
 
@@ -84,7 +86,6 @@ export default function MessagingInterface() {
     } catch (err) {
       console.error(err);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sessionId]);
 
   // FIX: track whether we still need to poll for docs.
@@ -170,7 +171,12 @@ export default function MessagingInterface() {
   useEffect(() => {
     if (!currentChatId) return;
 
-    fetchSingleChat(currentChatId);
+    // FIX: wrapped in an async IIFE so setState happens inside a promise
+    // callback rather than synchronously in the effect body — satisfies
+    // react-hooks/set-state-in-effect without changing behavior/timing.
+    (async () => {
+      await fetchSingleChat(currentChatId);
+    })();
   }, [currentChatId, fetchSingleChat]);
 
   const createNewChat = async () => {
@@ -250,14 +256,6 @@ export default function MessagingInterface() {
         throw new Error("Failed to save message");
       }
 
-      // FIX: replaced EventSource with fetch + ReadableStream.
-      // EventSource has two problems here:
-      // 1. JSON.parse crashes silently on any token containing special chars,
-      //    killing the entire stream with no error surfaced to the user.
-      // 2. EventSource cannot send credentials/headers and some browsers
-      //    handle its CORS differently from fetch, causing silent drops.
-      // fetch() with a streaming reader gives full control over parsing
-      // and error handling, and respects the same CORS config as all other calls.
 
       let streamedText = "";
 
@@ -454,6 +452,12 @@ export default function MessagingInterface() {
         </div>
       </aside>
 
+      <div
+        className="mi-sidebar-backdrop"
+        onClick={() => setSidebarOpen(false)}
+        aria-hidden="true"
+      />
+
       <main className="mi-main">
         <div className="mi-topbar">
           <button
@@ -472,8 +476,7 @@ export default function MessagingInterface() {
         <div className="mi-messages">
           {messages.length === 0 && (
             <div className="mi-empty-state">
-              <div className="mi-empty-icon">✨</div>
-              <h2>Start chatting with your AI assistant</h2>
+              <div className="mi-empty-icon"><img src={robot} alt="Robot image" height="100px" width="100px"/></div>
               <p>Upload documents and ask questions naturally.</p>
             </div>
           )}

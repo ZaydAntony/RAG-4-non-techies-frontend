@@ -1,6 +1,6 @@
 #root {
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
+  height: auto;
 }
 
 body {
@@ -20,16 +20,18 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 90vw;
-  height: 15vh;
+  width: 90%;
+  max-width: 1400px;
+  height: clamp(90px, 15vh, 160px);
   margin: 0 auto;
+  gap: 16px;
 }
 
 /* ── Progress bar track ── */
 .loading {
   position: relative;
-  width: 50vw;
-  height: 0.8vh;
+  width: clamp(120px, 50vw, 700px);
+  height: 6px;
   background-color: #b9a7ff;
   border-radius: 8px;
   opacity: 0.85;
@@ -70,10 +72,12 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  width: 90vw;
-  height: 60vh;
+  width: 90%;
+  max-width: 1400px;
+  height: clamp(420px, 60vh, 800px);
   margin: 0 auto;
   padding-top: 2vh;
+  gap: 16px;
 }
 
 /* =========================
@@ -81,7 +85,8 @@ body {
 ========================= */
 
 .Messaging {
-  width: 60vw;
+  width: 60%;
+  min-width: 0;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -311,8 +316,8 @@ body {
 
 .loading2 {
   position: relative;
-  width: 0.8vh;
-  height: 45vh;
+  width: 6px;
+  height: clamp(220px, 45vh, 500px);
   background-color: #b9a7ff;
   border-radius: 8px;
   opacity: 0.85;
@@ -376,4 +381,134 @@ body {
   display: flex;
   align-items: flex-end;
   gap: 12px;
+}
+
+/* =========================
+   RESPONSIVE — TABLET
+   (matches the 900px breakpoint already
+   used in MessagingInterface.css)
+========================= */
+
+@media (max-width: 900px) {
+  .container {
+    width: 94%;
+    gap: 12px;
+  }
+
+  .loading {
+    width: clamp(100px, 40vw, 500px);
+  }
+}
+
+/* =========================
+   RESPONSIVE — MOBILE
+   Below this width the side-by-side chat +
+   vertical pipeline layout no longer fits;
+   stack vertically instead, same visual language
+   at a smaller scale.
+========================= */
+
+@media (max-width: 768px) {
+  .container {
+    height: auto;
+    min-height: 100px;
+    flex-wrap: wrap;
+    padding: 12px 0;
+  }
+
+  .uploadbot,
+  .uploadcompletebot,
+  .processingImg,
+  .gears video {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  .gears {
+    width: 80px;
+    height: 80px;
+  }
+
+  .container2 {
+    flex-direction: column;
+    align-items: stretch;
+    width: 94%;
+    height: auto;
+    gap: 24px;
+    padding-bottom: 24px;
+  }
+
+  .Messaging {
+    width: 100%;
+    height: 60vh;
+    min-height: 420px;
+  }
+
+  /* The vertical pipeline becomes a horizontal one once stacked
+     beneath the chat panel, reusing the same fill/animation logic
+     via the existing .loading2 / .loading2-fill classes. */
+  .Ingest-pipeline-extension {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .loading2 {
+    width: clamp(100px, 60vw, 400px);
+    height: 6px;
+  }
+
+  .loading2-fill {
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100% !important;
+    transition: width 2.2s cubic-bezier(0.4, 0, 0.2, 1),
+                background 0.4s ease;
+  }
+
+  .loading2-fill.status-uploading  { background: linear-gradient(90deg, #6e5add, #a695f5); }
+  .loading2-fill.status-processing { background: linear-gradient(90deg, #5080d0, #92b4f5); }
+  .loading2-fill.status-ready      { background: linear-gradient(90deg, #28aa6e, #7de8b8); }
+  .loading2-fill.status-error      { background: linear-gradient(90deg, #cc4444, #f09090); }
+  .loading2-fill.status-idle       { background: #b9a7ff; }
+
+  .vertical-bot {
+    top: 50% !important;
+    left: 0 !important;
+    transform: translateY(-50%);
+    animation: fadeInBot 0.3s ease forwards,
+               descendPipelineMobile 2.5s cubic-bezier(0.4, 0, 0.6, 1) 0.15s forwards;
+  }
+
+  .ai-bot-wrapper img,
+  .ai-bot-wrapper video {
+    width: 70px;
+    height: 70px;
+  }
+
+  .success-popout {
+    right: -50px;
+    width: 50px !important;
+    height: 50px !important;
+  }
+}
+
+@keyframes descendPipelineMobile {
+  from { left: -20px; opacity: 1; }
+  to   { left: 85%; opacity: 1; }
+}
+
+@media (max-width: 480px) {
+  .uploadbot-text {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .Messaging {
+    height: 55vh;
+    min-height: 360px;
+  }
 }
