@@ -169,3 +169,14 @@
   .ai-navbar-inner { padding: 12px 16px; }
   .ai-brand { font-size: 22px; }
 }
+
+
+/* Final pass: subtle monochrome circuit aesthetic */
+.nav-container{background:transparent!important;color:#4b4945}
+.ai-navbar{background:rgba(244,243,240,.78)!important;backdrop-filter:none!important;border-bottom:1px solid rgba(76,73,67,.09)!important}
+.ai-navbar-inner{padding:13px 5%!important}
+.ai-brand{font-family:Inter,"Segoe UI",Arial,sans-serif!important;font-size:23px!important;font-weight:650!important;letter-spacing:-.055em!important;color:#55524d!important;transform:none!important}
+.ai-btn{background:rgba(76,73,67,.055)!important;border:1px solid rgba(76,73,67,.13)!important;border-radius:3px!important;color:#5b5852!important;box-shadow:none!important;font-weight:500!important;transition:background .25s ease,border-color .25s ease!important}
+.ai-btn:hover{background:rgba(76,73,67,.10)!important;color:#4b4945!important;transform:none!important}
+.ai-alert{background:rgba(244,243,240,.56)!important;border:0!important;border-bottom:1px solid rgba(76,73,67,.075)!important;color:#89857e!important;font-size:11px!important;backdrop-filter:none!important;margin:0!important}
+.ai-alert p{margin:3px 0 0}
