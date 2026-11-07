@@ -599,3 +599,24 @@ body {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+
+/* Final pass: subtle, monochrome circuit aesthetic */
+:root{--quiet-ink:#4b4945;--quiet-muted:#898680}
+html,body,#root{background:#f4f3f0!important;color:var(--quiet-ink);font-family:Inter,"Segoe UI",Arial,sans-serif}
+body{background-color:#f4f3f0!important;background-image:radial-gradient(ellipse at 82% 20%,rgba(255,255,255,.78),transparent 42%),linear-gradient(135deg,rgba(255,255,255,.38),transparent 55%)!important}
+.container,.container2{position:relative;z-index:1}
+.loading,.loading2{background:rgba(104,101,95,.13)!important;border:0!important;border-radius:1px!important;box-shadow:none!important;height:2px}
+.loading-fill,.loading2-fill{border-radius:1px!important;background:#77736c!important;box-shadow:none!important;transition:width 1.8s cubic-bezier(.2,.65,.25,1),height 1.8s cubic-bezier(.2,.65,.25,1)!important}
+.loading-fill.status-uploading,.loading2-fill.status-uploading,.loading-fill.status-processing,.loading2-fill.status-processing{background:#89857e!important}
+.loading-fill.status-ready,.loading2-fill.status-ready{background:#77877b!important}
+.loading-fill.status-error,.loading2-fill.status-error{background:#a17e75!important}
+.uploadbot-text{background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;color:#696660!important;padding:5px 0!important;font-size:12px!important;font-weight:500!important;letter-spacing:.025em;backdrop-filter:none!important}
+.uploadbot-text.status-uploading,.uploadbot-text.status-processing,.uploadbot-text.status-ready,.uploadbot-text.status-error,.uploadbot-text.status-idle{color:#696660!important;background:transparent!important;border:0!important}
+.upload-error-pill{background:rgba(161,126,117,.09)!important;border:1px solid rgba(161,126,117,.2)!important;color:#896b64!important;border-radius:2px!important}
+.uploadbot,.uploadcompletebot,.processingImg,.processingvid,.pipeline-bot,.vertical-bot,.success-popout{filter:grayscale(1) sepia(.13) saturate(.42) contrast(.88) brightness(1.04)!important;mix-blend-mode:multiply!important;opacity:.76}
+.uploadbot-wrapper{transition:transform .55s ease!important}.uploadbot-wrapper:hover{transform:translateY(-2px)!important}
+.gears-visible,.gears-vid-visible{opacity:.72!important}
+.ai-ready{animation:quietReady 3.4s ease-in-out infinite!important}
+@keyframes quietReady{0%,100%{opacity:.72;transform:scale(1)}50%{opacity:.88;transform:scale(1.018)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
