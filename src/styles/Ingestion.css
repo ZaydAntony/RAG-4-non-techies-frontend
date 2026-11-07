@@ -512,3 +512,90 @@ body {
     min-height: 360px;
   }
 }
+
+
+/* =========================================================
+   RAGGIT / MECHANICAL EDITION
+   Visual-only overrides: existing structure and status logic stay intact.
+========================================================= */
+:root {
+  --rag-paper: #e9dfcd;
+  --rag-paper-light: #f5f0e6;
+  --rag-sand: #c9b99f;
+  --rag-sand-dark: #a9977d;
+  --rag-ink: #392719;
+  --rag-ink-soft: #5b4634;
+  --rag-line: rgba(57, 39, 25, .14);
+  --rag-accent: #8b6846;
+  --rag-green: #53745c;
+  --rag-red: #a24f42;
+}
+body {
+  color: var(--rag-ink);
+  font-family: Inter, "Segoe UI", sans-serif;
+  background-color: var(--rag-paper);
+  background-image:
+    linear-gradient(var(--rag-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--rag-line) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.container { max-width: 1440px; }
+.loading, .loading2 {
+  background: #d0c1aa;
+  border: 1px solid rgba(57,39,25,.28);
+  border-radius: 2px;
+  box-shadow: inset 0 1px 2px rgba(57,39,25,.12);
+}
+.loading.pipeline-active, .loading2.pipeline-active {
+  box-shadow: 0 0 0 3px rgba(139,104,70,.12);
+}
+.loading-fill, .loading2-fill {
+  border-radius: 1px;
+  background: var(--rag-ink-soft);
+  transition: width 1.35s cubic-bezier(.22,.75,.25,1), height 1.35s cubic-bezier(.22,.75,.25,1), background .35s ease;
+}
+.loading-fill.status-uploading, .loading2-fill.status-uploading { background: #8b6846; }
+.loading-fill.status-processing, .loading2-fill.status-processing { background: #6e6556; }
+.loading-fill.status-ready, .loading2-fill.status-ready { background: var(--rag-green); }
+.loading-fill.status-error, .loading2-fill.status-error { background: var(--rag-red); }
+.uploadbot-text {
+  color: var(--rag-ink);
+  background: var(--rag-paper-light);
+  border: 1px solid var(--rag-sand-dark);
+  border-radius: 3px;
+  box-shadow: 3px 3px 0 rgba(57,39,25,.09);
+  backdrop-filter: none;
+}
+.uploadbot-text.status-uploading, .uploadbot-text.status-processing {
+  color: var(--rag-ink);
+  background: #e8dcc8;
+  border-color: var(--rag-accent);
+}
+.uploadbot-text.status-ready {
+  color: #35533c;
+  background: #e1e8dc;
+  border-color: #82947c;
+}
+.uploadbot-text.status-error {
+  color: #873d33;
+  background: #f0dfd8;
+  border-color: #b77a6d;
+}
+.upload-error-pill {
+  border-radius: 3px;
+  background: #f0dfd8;
+  border-color: #b77a6d;
+  color: #873d33;
+}
+.uploadbot-wrapper { transition: transform .45s cubic-bezier(.2,.8,.2,1); }
+.uploadbot-wrapper:hover { transform: translateY(-3px); }
+.pipeline-bot, .vertical-bot { filter: drop-shadow(0 3px 2px rgba(57,39,25,.15)); }
+.gears-visible, .gears-vid-visible { filter: sepia(.28) saturate(.72); }
+.ai-ready { animation: ragReadyPulse 2.8s ease-in-out infinite; }
+@keyframes ragReadyPulse {
+  0%,100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(83,116,92,0)); }
+  50% { transform: scale(1.035); filter: drop-shadow(0 3px 7px rgba(83,116,92,.28)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
