@@ -107,3 +107,65 @@
     font-size: 13px;
   }
 }
+
+
+
+/* =========================================================
+   RAGGIT / MECHANICAL EDITION
+========================================================= */
+.nav-container {
+  color: #392719;
+  background-color: #e9dfcd;
+  background-image: linear-gradient(rgba(57,39,25,.075) 1px, transparent 1px), linear-gradient(90deg, rgba(57,39,25,.075) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.ai-navbar {
+  background: #f5f0e6;
+  backdrop-filter: none;
+  border-bottom: 1px solid #a9977d;
+}
+.ai-navbar-inner {
+  min-height: 76px;
+  padding: 14px 5%;
+}
+.ai-brand {
+  font-family: Inter, "Segoe UI", sans-serif;
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: -.065em;
+  color: #392719 !important;
+  transform: none;
+}
+.ai-btn {
+  border: 1px solid #392719 !important;
+  border-radius: 3px;
+  background: #392719 !important;
+  color: #f5f0e6 !important;
+  padding: 10px 19px;
+  box-shadow: 3px 3px 0 #c9b99f;
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+}
+.ai-btn:hover {
+  background: #513a28 !important;
+  color: #fff8ef !important;
+  transform: translate(1px,1px);
+  box-shadow: 2px 2px 0 #c9b99f;
+}
+.ai-btn:disabled { opacity: .72; }
+.ai-alert {
+  margin: 0;
+  padding: 10px 20px;
+  border: 0;
+  border-bottom: 1px solid rgba(57,39,25,.18);
+  border-radius: 0;
+  background: #e6dac7 !important;
+  color: #5b4634;
+  backdrop-filter: none;
+  font-size: 12px;
+  letter-spacing: .015em;
+}
+.ai-alert p { margin: 3px 0 0; }
+@media (max-width: 480px) {
+  .ai-navbar-inner { padding: 12px 16px; }
+  .ai-brand { font-size: 22px; }
+}
