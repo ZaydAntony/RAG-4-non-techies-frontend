@@ -691,3 +691,39 @@ body,
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+
+/* Final pass: subtle monochrome circuit aesthetic */
+.mi-wrapper{background:transparent!important;background-color:transparent!important;color:#4b4945;font-family:Inter,"Segoe UI",Arial,sans-serif}
+.mi-sidebar{background:rgba(244,243,240,.52)!important;backdrop-filter:none!important;border-right:1px solid rgba(76,73,67,.09)!important;box-shadow:none!important;transition:transform .38s cubic-bezier(.2,.65,.25,1)!important}
+.mi-logo-icon{background:rgba(94,91,84,.08)!important;color:#77736c!important;border:1px solid rgba(76,73,67,.10);border-radius:50%!important}
+.mi-logo h2,.mi-topbar h3{color:#4b4945!important;font-weight:600;letter-spacing:-.025em}
+.mi-logo p,.mi-topbar p{color:#929089!important}
+.mi-newchat-btn{background:rgba(95,91,83,.055)!important;color:#5c5953!important;border:1px solid rgba(76,73,67,.12)!important;border-radius:3px!important;box-shadow:none!important;font-weight:500!important;transition:background .25s ease!important}
+.mi-newchat-btn:hover{background:rgba(95,91,83,.10)!important;transform:none!important}
+.mi-section-title{color:#99958d!important;font-size:10px;letter-spacing:.14em;font-weight:600}
+.mi-chatlist,.mi-doclist{scrollbar-color:rgba(76,73,67,.18) transparent!important}
+.mi-chatlist::-webkit-scrollbar-thumb,.mi-doclist::-webkit-scrollbar-thumb{background:rgba(76,73,67,.18)!important}
+.mi-chatitem,.mi-docitem{background:transparent!important;border:1px solid transparent!important;border-radius:3px!important;color:#77736c!important;transition:background .22s ease,color .22s ease!important}
+.mi-chatitem:hover,.mi-docitem:hover{background:rgba(76,73,67,.045)!important;transform:none!important}
+.mi-chatitem.active{background:rgba(76,73,67,.065)!important;border-color:rgba(76,73,67,.07)!important;box-shadow:inset 2px 0 0 rgba(76,73,67,.36)}
+.mi-chat-title{color:#55524d!important}
+.mi-sidebar-footer{border-top:1px solid rgba(76,73,67,.08)!important}
+.del-btn{background:transparent!important;color:#8b7771!important;border:1px solid rgba(139,119,113,.18)!important;border-radius:3px!important}
+.del-btn:hover{background:rgba(139,119,113,.07)!important;transform:none!important}
+.mi-main,.mi-messages{background:transparent!important}
+.mi-topbar{background:rgba(244,243,240,.38)!important;backdrop-filter:none!important;border-bottom:1px solid rgba(76,73,67,.09)!important}
+.mi-mobile-toggle{background:rgba(76,73,67,.045)!important;color:#696660!important;border:1px solid rgba(76,73,67,.10)!important;border-radius:3px!important}
+.mi-empty-icon{background:transparent!important;border:1px solid rgba(76,73,67,.10);border-radius:50%!important;color:#89857e}
+.mi-empty-state p,.mi-empty{color:#929089!important}
+.mi-bubble{box-shadow:none!important;border-radius:4px!important}
+.mi-bubble.ai{background:rgba(255,255,255,.34)!important;border:1px solid rgba(76,73,67,.075)!important;color:#55524d!important}
+.mi-bubble.user{background:rgba(83,80,73,.085)!important;border:1px solid rgba(76,73,67,.06)!important;color:#4b4945!important}
+.mi-inputbar{background:rgba(244,243,240,.48)!important;backdrop-filter:none!important;border-top:1px solid rgba(76,73,67,.09)!important}
+.mi-inputbar textarea{background:rgba(255,255,255,.42)!important;border:1px solid rgba(76,73,67,.14)!important;border-radius:3px!important;color:#4b4945!important;box-shadow:none!important;font:inherit}
+.mi-inputbar textarea:focus{border-color:rgba(76,73,67,.30)!important;box-shadow:0 0 0 2px rgba(76,73,67,.045)!important}
+.mi-inputbar textarea::placeholder{color:#a19d95!important}
+.mi-inputbar button{background:rgba(76,73,67,.085)!important;border:1px solid rgba(76,73,67,.13)!important;border-radius:3px!important;color:#5a5751!important;box-shadow:none!important;font-weight:500!important}
+.mi-inputbar button:hover:not(:disabled){background:rgba(76,73,67,.13)!important;transform:none!important;box-shadow:none!important}
+.mi-sidebar-backdrop{background:rgba(52,50,46,.20)!important}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
