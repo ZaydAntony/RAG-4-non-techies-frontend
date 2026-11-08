@@ -631,3 +631,29 @@ body::before{
 #root{position:relative;z-index:1}
 @media(max-width:700px){body::before{width:76vw;opacity:.065;background-position:right 8vh;background-size:100% auto}}
 @media(prefers-reduced-motion:reduce){body::before{scroll-behavior:auto}}
+
+
+
+/* Blueprint backdrop + soft, playful interaction layer */
+:root{--bp-ink:#34485b;--bp-muted:#647486;--bp-line:rgba(53,72,91,.16);--bp-glass:rgba(248,250,251,.48);--bp-pill:rgba(248,250,252,.76)}
+html,body,#root{min-height:100%;background:#e9edf0;color:var(--bp-ink);font-family:Inter,"Segoe UI",Arial,sans-serif}
+body{background-color:#e9edf0!important;background-image:linear-gradient(90deg,rgba(245,247,249,.80),rgba(239,243,246,.62)),url("https://cdn.vectorstock.com/i/500p/69/54/engine-parts-blueprint-background-vector-32106954.jpg")!important;background-size:cover!important;background-position:center center!important;background-attachment:fixed!important;background-repeat:no-repeat!important}
+body::before{content:none!important;display:none!important}
+.container,.container2{position:relative}
+.loading,.loading2{background:rgba(61,82,102,.15)!important;border:0!important;box-shadow:none!important;border-radius:999px!important;overflow:hidden!important;opacity:.9}
+.loading{height:4px!important}.loading2{width:4px!important}
+.loading.pipeline-active,.loading2.pipeline-active{box-shadow:0 0 0 4px rgba(91,125,151,.07)!important}
+.loading-fill,.loading2-fill{background:linear-gradient(90deg,#718ba0,#9eb1bf)!important;border-radius:999px!important;box-shadow:none!important;transition:width 1.7s cubic-bezier(.22,.75,.25,1),height 1.7s cubic-bezier(.22,.75,.25,1)!important}
+.loading-fill.status-ready,.loading2-fill.status-ready{background:linear-gradient(90deg,#829c91,#adc0b4)!important}
+.loading-fill.status-error,.loading2-fill.status-error{background:#b88f89!important}
+.uploadbot-text{background:rgba(247,249,250,.54)!important;border:1px solid rgba(66,86,105,.10)!important;border-radius:999px!important;box-shadow:0 4px 18px rgba(42,59,75,.045)!important;color:#526577!important;backdrop-filter:blur(10px)!important;font-size:12px!important;font-weight:600!important;padding:8px 15px!important;letter-spacing:.02em}
+.uploadbot-text.status-uploading,.uploadbot-text.status-processing,.uploadbot-text.status-ready,.uploadbot-text.status-error,.uploadbot-text.status-idle{background:rgba(247,249,250,.54)!important;border-color:rgba(66,86,105,.10)!important;color:#526577!important}
+.upload-error-pill{border-radius:999px!important;background:rgba(185,135,128,.14)!important;border:1px solid rgba(153,105,98,.2)!important;color:#8d625c!important}
+.uploadbot,.uploadcompletebot,.processingImg,.processingvid,.pipeline-bot,.vertical-bot,.success-popout{filter:grayscale(.8) sepia(.12) hue-rotate(165deg) saturate(.48) contrast(.92)!important;mix-blend-mode:multiply!important;opacity:.82}
+.uploadbot-wrapper{transition:transform .38s cubic-bezier(.2,.8,.2,1)!important}
+.uploadbot-wrapper:hover{transform:translateY(-4px) scale(1.025)!important}
+.uploadbot-wrapper:active{transform:scale(.97)!important}
+.gears-visible,.gears-vid-visible{opacity:.78!important}
+.ai-ready{animation:blueprintBob 3.2s ease-in-out infinite!important}
+@keyframes blueprintBob{0%,100%{transform:translateY(0) scale(1);opacity:.76}50%{transform:translateY(-3px) scale(1.025);opacity:.94}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
