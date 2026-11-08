@@ -727,3 +727,40 @@ body,
 .mi-inputbar button:hover:not(:disabled){background:rgba(76,73,67,.13)!important;transform:none!important;box-shadow:none!important}
 .mi-sidebar-backdrop{background:rgba(52,50,46,.20)!important}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+
+
+/* Chat sits directly on the blueprint canvas */
+.mi-wrapper{background:transparent!important;background-image:none!important;color:#34485b!important;font-family:Inter,"Segoe UI",Arial,sans-serif!important}
+.mi-sidebar{background:rgba(242,246,248,.25)!important;backdrop-filter:blur(5px)!important;border-right:1px solid rgba(55,77,96,.12)!important;box-shadow:none!important}
+.mi-sidebar-top,.mi-sidebar-footer{background:transparent!important}
+.mi-logo-icon{background:rgba(80,111,137,.12)!important;color:#536d83!important;border:1px solid rgba(55,77,96,.10)!important;border-radius:50%!important}
+.mi-logo h2,.mi-topbar h3{color:#34485b!important;font-weight:650!important;letter-spacing:-.035em}
+.mi-logo p,.mi-topbar p{color:#718294!important}
+.mi-newchat-btn,.mi-inputbar button,.ai-btn,.mi-mobile-toggle,.del-btn{border-radius:999px!important;box-shadow:0 4px 14px rgba(48,69,88,.07)!important;transition:transform .25s cubic-bezier(.2,.8,.2,1),background .25s ease,box-shadow .25s ease!important}
+.mi-newchat-btn{background:rgba(247,250,252,.68)!important;color:#49647b!important;border:1px solid rgba(68,94,116,.16)!important;font-weight:600!important}
+.mi-newchat-btn:hover,.mi-inputbar button:hover:not(:disabled),.ai-btn:hover{transform:translateY(-2px)!important;box-shadow:0 7px 18px rgba(48,69,88,.11)!important;background:rgba(255,255,255,.88)!important}
+.mi-section-title{color:#8493a0!important;letter-spacing:.13em!important}
+.mi-chatitem,.mi-docitem{background:transparent!important;border:1px solid transparent!important;border-radius:14px!important;color:#64788a!important;transition:background .22s ease,border-color .22s ease,transform .22s ease!important}
+.mi-chatitem:hover,.mi-docitem:hover{background:rgba(247,250,252,.42)!important;border-color:rgba(68,94,116,.09)!important;transform:translateX(2px)!important}
+.mi-chatitem.active{background:rgba(247,250,252,.55)!important;border-color:rgba(68,94,116,.12)!important;box-shadow:inset 2px 0 rgba(91,125,151,.55)!important}
+.mi-chat-title{color:#465d72!important}
+.mi-sidebar-footer{border-top:1px solid rgba(55,77,96,.10)!important}
+.del-btn{background:rgba(174,130,124,.12)!important;color:#896b67!important;border:1px solid rgba(153,105,98,.16)!important}
+.del-btn:hover{background:rgba(174,130,124,.20)!important;transform:translateY(-1px)!important}
+.mi-main,.mi-messages{background:transparent!important}
+.mi-topbar{background:rgba(246,249,250,.20)!important;backdrop-filter:blur(4px)!important;border-bottom:1px solid rgba(55,77,96,.10)!important}
+.mi-mobile-toggle{background:rgba(247,250,252,.58)!important;color:#526b80!important;border:1px solid rgba(68,94,116,.14)!important}
+.mi-empty-icon{background:rgba(247,250,252,.26)!important;border:1px solid rgba(68,94,116,.12)!important;border-radius:50%!important;color:#7890a3}
+.mi-empty-state p,.mi-empty{color:#7a8b99!important}
+.mi-bubble{border-radius:22px!important;box-shadow:0 4px 16px rgba(48,69,88,.035)!important;backdrop-filter:blur(5px)}
+.mi-bubble.ai{background:rgba(250,252,253,.40)!important;border:1px solid rgba(68,94,116,.09)!important;color:#40576b!important}
+.mi-bubble.user{background:rgba(102,133,157,.18)!important;border:1px solid rgba(68,94,116,.10)!important;color:#344d62!important}
+.mi-inputbar{background:rgba(245,248,250,.22)!important;backdrop-filter:blur(5px)!important;border-top:1px solid rgba(55,77,96,.10)!important}
+.mi-inputbar textarea{background:rgba(250,252,253,.58)!important;border:1px solid rgba(68,94,116,.15)!important;border-radius:999px!important;color:#34485b!important;box-shadow:0 4px 16px rgba(48,69,88,.035)!important;transition:border-color .25s ease,background .25s ease,box-shadow .25s ease!important}
+.mi-inputbar textarea:focus{background:rgba(255,255,255,.78)!important;border-color:rgba(83,119,148,.36)!important;box-shadow:0 0 0 4px rgba(99,137,166,.09)!important}
+.mi-inputbar textarea::placeholder{color:#8a9aa7!important}
+.mi-inputbar button{background:rgba(83,119,148,.18)!important;border:1px solid rgba(68,94,116,.14)!important;color:#3f5d75!important;font-weight:650!important}
+.mi-inputbar button:disabled{opacity:.48!important}
+.mi-sidebar-backdrop{background:rgba(48,65,80,.16)!important}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
