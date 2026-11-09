@@ -32,7 +32,7 @@ Everything is designed to feel **fluid, responsive, and slightly playful** — n
 
 ---
 
-## 🎨 Frontend Philosophy
+## Frontend Philosophy
 
 This UI was built with one goal:
 
@@ -48,7 +48,7 @@ So the frontend focuses on:
 
 ---
 
-## 🧰 Frontend Stack
+## Frontend Stack
 
 - React (core UI layer)
 - Modern component-driven architecture
@@ -71,7 +71,7 @@ So the frontend focuses on:
 
 - No real-time streaming (responses appear after processing)  
 - Some flows still rely on loading states instead of live updates  
-- WebSocket-level interactivity is not implemented yet 😅  Help meeee......
+- WebSocket-level interactivity is not implemented yet .Help meeee......
 
 ---
 
@@ -85,7 +85,7 @@ So the frontend focuses on:
 
 ---
 
-## 😤 My hot take
+## My hot take
 
 Most RAG apps feel like dashboards or a bunch of nodes lined up together.
 
@@ -93,4 +93,4 @@ This one tries to feel like an experience.
 
 Still tweaking. Still polishing. Still obsessing over tiny UI details no one asked for.
 
-Ciao 🤡✌🏼
+Ciao ✌🏼
