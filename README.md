@@ -4,7 +4,7 @@
 > And yes… that’s a challenge. Try finding a better one 😝
 
 ---
-<img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/a175ddff-f1b8-4dcf-821a-c567553c2f57" />
+<img width="1200" height="600" alt="image" src="https://github.com/user-attachments/assets/a175ddff-f1b8-4dcf-821a-c567553c2f57" />
 
 
 ## 🧠 About Raggit
