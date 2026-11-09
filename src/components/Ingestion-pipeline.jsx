@@ -1,12 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 
-import approved from "../Raggit-mp4-files/approved.mp4";
-import uploadbot from "../Raggit-mp4-files/file-upload-bot.mp4";
-import filemp4 from "../Raggit-mp4-files/fileupload.mp4";
-import processingVid from "../Raggit-mp4-files/process-gears.mp4";
-
-import aibot from "../Raggit-static-assets/ai-bot.png";
-import processingImg from "../Raggit-static-assets/progress-gears.png";
+import duck from "../cute/duck.svg";
+import bunny from "../cute/bunny.svg";
+import jar from "../cute/jar.svg";
+import frog from "../cute/frog.svg";
+import mochi from "../cute/mochi.svg";
 
 import "../styles/Ingestion.css";
 
@@ -17,11 +15,11 @@ import Nav from "./Navbar";
 const API_BASE = import.meta.env.VITE_API_URL;
 
 const STATUS_LABELS = {
-  idle: "Upload Knowledge Files",
-  uploading: "Uploading Files",
-  processing: "Processing Knowledge",
-  ready: "Knowledge Ready",
-  error: "Upload Failed",
+  idle: "Upload a PDF",
+  uploading: "Nibbling your file...",
+  processing: "Making jam...",
+  ready: "Ready to chat!",
+  error: "Upload failed",
 };
 
 const H_FILL = {
@@ -50,7 +48,7 @@ function Ingestion() {
   const [verticalKey, setVerticalKey] = useState(0);
   const [uploadError, setUploadError] = useState(null);
   const labelTimeoutRef = useRef(null);
-  
+
   useEffect(() => {
     if (prevStatusRef.current === null) {
       prevStatusRef.current = status;
@@ -155,15 +153,10 @@ function Ingestion() {
     }
   };
 
-  const isIdle = status === "idle";
   const isUploading = status === "uploading";
   const isProcessing = status === "processing";
   const isReady = status === "ready";
-  const isError = status === "error";
   const isPipelineActive = isUploading || isProcessing;
-
-  const showGearsPng = isIdle || isReady || isError;
-  const showGearsVid = isUploading || isProcessing;
 
   return (
     <>
@@ -179,9 +172,7 @@ function Ingestion() {
               {STATUS_LABELS[status]}
             </div>
 
-            <video className="uploadbot" autoPlay loop muted playsInline width="120" height="120">
-              <source src={uploadbot} type="video/mp4"/>
-            </video>
+            <img src={duck} alt="" className="uploadbot" width="96" height="96" />
           </label>
 
           {uploadError && (
@@ -204,45 +195,17 @@ function Ingestion() {
           />
 
           {isUploading && (
-            <video
-              key={pipelineKey}
-              className="pipeline-bot"
-              autoPlay
-              loop
-              muted
-              playsInline
-              width="48"
-              height="48"
-            >
-              <source src={filemp4} type="video/mp4" />
-            </video>
+            <img key={pipelineKey} src={bunny} alt="" className="pipeline-bot" />
           )}
         </div>
 
         <div className="gears">
           <img
-            src={processingImg}
-            alt="Idle gears"
-            className={`processingImg ${
-              showGearsPng ? "gears-visible" : "gears-hidden"
-            }`}
-            width="96"
-            height="96"
+            src={jar}
+            alt=""
+            className={`jar ${isProcessing ? "jar-busy" : ""} ${isReady ? "jar-done" : ""}`}
+            width="84"
           />
-
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className={
-              showGearsVid ? "gears-vid-visible" : "gears-vid-hidden"
-            }
-            width="96"
-            height="96"
-          >
-            <source src={processingVid} type="video/mp4" />
-          </video>
         </div>
       </div>
 
@@ -261,35 +224,19 @@ function Ingestion() {
             />
 
             {isProcessing && (
-              <video
-                key={verticalKey}
-                className="vertical-bot"
-                autoPlay
-                loop
-                muted
-                playsInline
-                width="48"
-                height="48"
-              >
-                <source src={filemp4} type="video/mp4" />
-              </video>
+              <img key={verticalKey} src={bunny} alt="" className="vertical-bot" />
             )}
           </div>
 
           <div className="ai-bot-wrapper">
             <img
-              src={aibot}
+              src={frog}
               className={`uploadcompletebot ${ready ? "ai-ready" : ""}`}
-              alt="AI Bot"
-              width="96"
-              height="96"
+              alt="Raggit frog"
+              width="180"
             />
 
-            {isReady && (
-              <video className="success-popout" autoPlay loop muted playsInline width="48" height="48">
-                <source src={approved} type="video/mp4" />
-              </video>
-            )}
+            {isReady && <img src={mochi} alt="" className="success-popout" />}
           </div>
         </div>
       </div>

@@ -7,7 +7,8 @@ import {
 
 import "../styles/MessagingInterface.css";
 
-import robot from "../assets/brand.png";
+import brains from "../cute/brains.svg";
+import bunny from "../cute/bunny.svg";
 
 // FIX: single API base — matches Ingestion.js
 const API_BASE = import.meta.env.VITE_API_URL;
@@ -392,15 +393,15 @@ export default function MessagingInterface() {
       <aside className={`mi-sidebar ${sidebarOpen ? "open" : "closed"}`}>
         <div className="mi-sidebar-top">
           <div className="mi-logo">
-            <div className="mi-logo-icon">✦</div>
+            <img className="mi-logo-icon" src={bunny} alt="" />
             <div>
-              <h2>RAG Assistant</h2>
-              <p>AI Workspace</p>
+              <h2>Raggit</h2>
+              <p>your reading buddy</p>
             </div>
           </div>
 
           <button className="mi-newchat-btn" onClick={createNewChat}>
-            + New Chat
+            New chat
           </button>
         </div>
 
@@ -438,7 +439,7 @@ export default function MessagingInterface() {
 
             {docs.map((d) => (
               <div key={d.id} className="mi-docitem">
-                <span>📄</span>
+                <span className="mi-doc-heart">♡</span>
                 <span>{d.title || d.file_name}</span>
               </div>
             ))}
@@ -447,7 +448,7 @@ export default function MessagingInterface() {
 
         <div className="mi-sidebar-footer">
           <button className="del-btn" onClick={deleteSession}>
-            Delete Session
+            Delete session
           </button>
         </div>
       </aside>
@@ -468,16 +469,16 @@ export default function MessagingInterface() {
           </button>
 
           <div>
-            <h3>AI Retrieval Workspace</h3>
-            <p>Ask questions about your uploaded documents.</p>
+            <h3>Ask your documents</h3>
+            <p>Answers come straight from what you uploaded.</p>
           </div>
         </div>
 
         <div className="mi-messages">
           {messages.length === 0 && (
             <div className="mi-empty-state">
-              <div className="mi-empty-icon"><img src={robot} alt="Robot image" height="100px" width="100px"/></div>
-              <p>Upload documents and ask questions naturally.</p>
+              <img className="mi-empty-art" src={brains} alt="Two brains, unplugged" />
+              <p>Your brain is unplugged. Upload a PDF to plug it in, then ask away.</p>
             </div>
           )}
 
@@ -497,7 +498,7 @@ export default function MessagingInterface() {
         <div className="mi-inputbar">
           <textarea
             ref={textareaRef}
-            placeholder="Ask anything about your documents..."
+            placeholder="Ask anything about your PDF..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}

@@ -1,9 +1,9 @@
-import "../styles/Nav.css";
 import { useEffect, useState } from "react";
+import "../styles/Nav.css";
 
 const API_BASE = import.meta.env.VITE_API_URL;
 
-function Nav() {
+function Navbar() {
   const [loading, setLoading] = useState(false);
   const [sessionExists, setSessionExists] = useState(false);
   const [alert, setAlert] = useState({
@@ -126,11 +126,11 @@ function Nav() {
       )}
 
       <div className="alert ai-alert" role="alert">
-        ⚠️ Notice: All uploaded documents will be automatically deleted after 2 hours.
-        <p>To delete everything immediately press the delete button.</p>
+        Heads up: uploaded files vanish after 2 hours.
+        <p>Want them gone now? Press Delete session.</p>
       </div>
     </div>
   );
 }
 
-export default Nav;
+export default Navbar;
